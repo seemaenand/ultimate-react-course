@@ -209,3 +209,20 @@ newUpdatedBook;
 // we can also update the properties
 const newNewUpdated = { ...book, pages: 1210 };
 newNewUpdated;
+
+// Template literals
+// lets create a string that contains the summary
+const summary = `${title}, a ${pages} page book is a great book by ${author} published in ${
+  publicationDate.split("-")[0]
+}`;
+summary;
+
+// we can call functions inside {} - anything thats an expression - anything that produces a value
+
+// Ternaries
+// in React, we need to define values based on a condition all the time. and there are many situations where we cannot use if/ else statements.
+// the ternary operator has 3 operands - condition?if true:if false
+const pagesRange = pages > 1000 ? "Over a 1000" : "less than 1000";
+pagesRange;
+
+// Arrow functions
