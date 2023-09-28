@@ -1,4 +1,5 @@
 // const data is an array that contains 5 book objects
+// one object for each book
 
 const data = [
   {
@@ -146,3 +147,65 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+// Destructuring
+// Destructuring is very important if we want to get data out of an object or out of an array
+
+// Destructuring of objects
+
+const book = getBook(2);
+// book;
+// we want title and author of a certain book
+// const title = book.title;
+// const author = book.author;
+
+// console.log(title, author);
+
+// reading data like this will be too cumbersome especially if there are a lot of properties - thats why we have object destructuring
+// the variable names in the below code has to be exact as the properties in the object
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+// console.log(title, author, genres);
+
+// destructuring of arrays is pretty similar but instead of relying on property names, it simply relies on the order of the array
+
+// so lets work with the genres array
+// const primaryGenre = genres[0];
+// primaryGenre;
+// const secondaryGenre = genres[1];
+// secondaryGenre;
+// console.log(primaryGenre, secondaryGenre);
+
+//  we can destructure the above code
+// const [primaryGenre, secondaryGenre] = genres;
+// console.log(primaryGenre, secondaryGenre);
+
+// Rest and spread operator
+const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+console.log(primaryGenre, secondaryGenre, otherGenres);
+
+// now instead of just 2 genres, we also want the others so in the above code we will write ...and then we write any name that we want.
+// other genres will be shown as an array
+
+// the same syntax that is the three dots ... is used for the spread operator
+// the spread operator can be used both on arrays and on objects
+
+// lets first look at array first. we want to make a new array of genres with the old genres and add a new one at the end.
+// const newGenres = [genres, "Epic fantasy"];
+// newGenres;
+//  in this form, we have an array inside of an array and we dont want that.
+// we want just one array
+const newGenres = [...genres, "Epic fantasy"];
+newGenres;
+// we can even place it ...genres at the end.
+
+// spread operators in objects
+// it helps us to add new properties and also update the existing
+const updatedBook = { book, moviePublicationDate: "2001-02" };
+updatedBook;
+// but we want one big object
+const newUpdatedBook = { ...book, moviePublicationDate: "2001-02" };
+newUpdatedBook;
+// we can also update the properties
+const newNewUpdated = { ...book, pages: 1210 };
+newNewUpdated;
